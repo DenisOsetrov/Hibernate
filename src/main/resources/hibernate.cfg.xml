@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Налаштування підключення до бази даних -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/hibernate?createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">rootroot</property>
+
+        <!-- Налаштування діалекта бази даних -->
+
+        <!-- Налаштування режиму показу SQL-запитів / на етапі продакшину - видалити!-->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Налаштування режиму створення таблиць у базі даних/ можна видрати create, update... -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <!-- Маппінг класів -->
+        <!-- Замініть com.example.User на повну назву вашого класу, представляючого таблицю бази даних -->
+        <!-- <mapping class="com.example.User"/> -->
+
+    </session-factory>
+</hibernate-configuration>
