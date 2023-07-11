@@ -12,6 +12,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 //Owner (Власник)
@@ -58,20 +59,38 @@ public class Main {
         session.beginTransaction();
 
         //Створюємо Owners - 3 шт.
-        session.save(new Owner("Oleg", new ArrayList<Car>(), new DriverLicense(12343223, "ER")));
-        session.save(new Owner("Anna", new ArrayList<Car>(), new DriverLicense(23343255, "OP")));
-        session.save(new Owner("Tom", new ArrayList<Car>(), new DriverLicense(65343244, "FE")));
+        List<Car> cars1 = new ArrayList<>();
+        cars1.add(new Car("OPEL", CarType.PASSENGER, 120, 7000, 2010));
+        Owner owner1 = new Owner("Oleg", cars1, new DriverLicense("12343223", "ER"));
+        session.save(owner1);
+
+        List<Car> cars2 = new ArrayList<>();
+        cars2.add(new Car("PEUGEOT", CarType.CARGO, 220, 8000, 2017));
+        Owner owner2 = new Owner("Anna", cars2, new DriverLicense("23343255", "OP"));
+        session.save(owner2);
+
+        List<Car> cars3 = new ArrayList<>();
+        cars3.add(new Car("HUNDAI", CarType.PASSENGER, 180, 17000, 2022));
+        Owner owner3 = new Owner("Tom", cars3, new DriverLicense("65343244", "FE"));
+        session.save(owner3);
 
         //Створюємо Cars - 3 шт.
-        Car car1 = new Car("OPEL", CarType.PASSENGER, 120, 7000, 2010);
-        session.save(car1);
-        Car car2 = new Car("PEUGEOT", CarType.CARGO, 220, 8000, 2017);
-        session.save(car2);
-        Car car3 = new Car("HUNDAI", CarType.PASSENGER, 180, 17000, 2022);
-        session.save(car3);
+//        Car car1 = new Car("OPEL", CarType.PASSENGER, 120, 7000, 2010);
+//        session.save(car1);
+//        Car car2 = new Car("PEUGEOT", CarType.CARGO, 220, 8000, 2017);
+//        session.save(car2);
+//        Car car3 = new Car("HUNDAI", CarType.PASSENGER, 180, 17000, 2022);
+//        session.save(car3);
 
         // збереженя сесії
         session.getTransaction().commit();
+
+//        session.beginTransaction();
+//
+//// Видалення таблиці driverlicense, якщо вона вже існує
+//        session.createSQLQuery("DROP TABLE IF EXISTS driverlicense").executeUpdate();
+//
+//        session.getTransaction().commit();
 
 
         //Оновлення користувача:
@@ -111,6 +130,10 @@ public class Main {
                             // List<User> users3 = session.createQuery("select u.email from User u", User.class).getResultList();
 //        System.out.println(users);
 
+//        session.createSQLQuery("ALTER TABLE owners DROP FOREIGN KEY FK9qiq6onfguckj0b2wf725dn2o;").executeUpdate();
+//        session.createSQLQuery("DROP TABLE IF EXISTS cars").executeUpdate();
+//        session.createSQLQuery("DROP TABLE IF EXISTS owners").executeUpdate();
+//        session.createSQLQuery("DROP TABLE IF EXISTS DriverLicense").executeUpdate();
         session.close();
         sessionFactory.close();
         serviceRegistry.close();
