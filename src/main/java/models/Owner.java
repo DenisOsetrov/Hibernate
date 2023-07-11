@@ -28,6 +28,7 @@ public class Owner {
     public DriverLicense driverLicense;
 
     // Constructor
+
     public Owner(String name, List<Car> cars, DriverLicense driverLicense) {
         this.name = name;
         this.cars = cars;

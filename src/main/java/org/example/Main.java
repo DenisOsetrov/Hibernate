@@ -1,6 +1,7 @@
 package org.example;
 
 import models.Car;
+import models.CarType;
 import models.DriverLicense;
 import models.Owner;
 import org.hibernate.Session;
@@ -10,9 +11,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.util.Arrays;
-import java.util.List;
-
+import java.util.ArrayList;
 
 
 //Owner (Власник)
@@ -58,14 +57,18 @@ public class Main {
 
         session.beginTransaction();
 
+        //Створюємо Owners - 3 шт.
+        session.save(new Owner("Oleg", new ArrayList<Car>(), new DriverLicense(12343223, "ER")));
+        session.save(new Owner("Anna", new ArrayList<Car>(), new DriverLicense(23343255, "OP")));
+        session.save(new Owner("Tom", new ArrayList<Car>(), new DriverLicense(65343244, "FE")));
 
-//        User user1 = new User("Vasya", 16, "vasay@gmail.com", Arrays.asList("Java","Js"), Gender.MALE);
-//        session.save(user1);
-//        User user2 = new User("Anna", 32, "anna@gmail.com", Arrays.asList("Http","TypeScript"), Gender.FEMALE);
-//        session.save(user2);
-//        User user3 = new User("Max", 46, "maax@gmail.com", Arrays.asList("CSS","React"), Gender.MALE);
-//        session.save(user3);
-
+        //Створюємо Cars - 3 шт.
+        Car car1 = new Car("OPEL", CarType.PASSENGER, 120, 7000, 2010);
+        session.save(car1);
+        Car car2 = new Car("PEUGEOT", CarType.CARGO, 220, 8000, 2017);
+        session.save(car2);
+        Car car3 = new Car("HUNDAI", CarType.PASSENGER, 180, 17000, 2022);
+        session.save(car3);
 
         // збереженя сесії
         session.getTransaction().commit();
