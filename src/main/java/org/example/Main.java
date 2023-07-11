@@ -74,66 +74,8 @@ public class Main {
         Owner owner3 = new Owner("Tom", cars3, new DriverLicense("65343244", "FE"));
         session.save(owner3);
 
-        //Створюємо Cars - 3 шт.
-//        Car car1 = new Car("OPEL", CarType.PASSENGER, 120, 7000, 2010);
-//        session.save(car1);
-//        Car car2 = new Car("PEUGEOT", CarType.CARGO, 220, 8000, 2017);
-//        session.save(car2);
-//        Car car3 = new Car("HUNDAI", CarType.PASSENGER, 180, 17000, 2022);
-//        session.save(car3);
-
-        // збереженя сесії
         session.getTransaction().commit();
 
-//        session.beginTransaction();
-//
-//// Видалення таблиці driverlicense, якщо вона вже існує
-//        session.createSQLQuery("DROP TABLE IF EXISTS driverlicense").executeUpdate();
-//
-//        session.getTransaction().commit();
-
-
-        //Оновлення користувача:
-//                        session.beginTransaction();
-//
-//                // Завантажуємо користувача з бази даних за його ідентифікатором
-//                        User user = session.get(User.class, 1);
-//
-//                // Змінюємо дані користувача
-//                        user.setName("John");
-//                        user.setEmail("john@gmail.com");
-//
-//                // Запускаємо оновлення користувача
-//                        session.update(user);
-//
-//                        session.getTransaction().commit();
-
-
-        // Видалення користувача:
-
-//                    session.beginTransaction();
-//
-//            // Завантажуємо користувача з бази даних за його ідентифікатором
-//                    User user = session.get(User.class, 1);
-//
-//            // Видаляємо користувача з бази даних
-//                    session.delete(user);
-//
-//                    session.getTransaction().commit();
-
-
-        // Робимо запит до БД. 1-й варіант - класичний, 2-й - сучасний
-                //List<User> users = session.createNativeQuery("select * from user", User.class).getResultList();
-                //System.out.println(users);
-//        List<User> users = session.createQuery("select u from User u", User.class).getResultList();
-                            // List<User> users2 = session.createQuery("select u.age from User u", User.class).getResultList();
-                            // List<User> users3 = session.createQuery("select u.email from User u", User.class).getResultList();
-//        System.out.println(users);
-
-//        session.createSQLQuery("ALTER TABLE owners DROP FOREIGN KEY FK9qiq6onfguckj0b2wf725dn2o;").executeUpdate();
-//        session.createSQLQuery("DROP TABLE IF EXISTS cars").executeUpdate();
-//        session.createSQLQuery("DROP TABLE IF EXISTS owners").executeUpdate();
-//        session.createSQLQuery("DROP TABLE IF EXISTS DriverLicense").executeUpdate();
         session.close();
         sessionFactory.close();
         serviceRegistry.close();
